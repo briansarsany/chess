@@ -34,6 +34,7 @@ public class ApplicationConfig extends Application {
         resources.add(com.games.api.service.GameFacadeREST.class);
         resources.add(com.games.api.service.KingFacadeREST.class);
         resources.add(com.games.api.service.KnightFacadeREST.class);
+        resources.add(com.games.api.service.PawnFacadeREST.class);
         resources.add(com.games.api.service.PieceFacadeREST.class);
         resources.add(com.games.api.service.PlayerFacadeREST.class);
         resources.add(com.games.api.service.QueenFacadeREST.class);

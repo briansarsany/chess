@@ -18,22 +18,21 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @XmlRootElement
-public class Knight extends Piece implements Serializable {
-    public Knight(boolean available, int x, int y) {
+public class Pawn extends Piece implements Serializable {
+
+    public Pawn(boolean available, int x, int y) {
         super(available, x, y);
+        // TODO Auto-generated constructor stub
     }
 
     @Override
     public boolean isValid(Board board, int fromX, int fromY, int toX, int toY) {
         if(super.isValid(board, fromX, fromY, toX, toY) == false)
             return false;
-
-        if(toX != fromX - 1 && toX != fromX + 1 && toX != fromX + 2 && toX != fromX - 2)
+        if(Math.sqrt(Math.pow(Math.abs((toX - fromX)),2)) + Math.pow(Math.abs((toY - fromY)), 2) != Math.sqrt(2)){
             return false;
-        if(toY != fromY - 2 && toY != fromY + 2 && toY != fromY - 1 && toY != fromY + 1)
-            return false;
-
-        return true;
+        }
+        return false;
     }    
 
     private static final long serialVersionUID = 1L;
@@ -59,10 +58,10 @@ public class Knight extends Piece implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Knight)) {
+        if (!(object instanceof Pawn)) {
             return false;
         }
-        Knight other = (Knight) object;
+        Pawn other = (Pawn) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -71,7 +70,7 @@ public class Knight extends Piece implements Serializable {
 
     @Override
     public String toString() {
-        return "com.games.api.Knight[ id=" + id + " ]";
+        return "com.games.api.Pawn[ id=" + id + " ]";
     }
     
 }

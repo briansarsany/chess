@@ -18,7 +18,23 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @XmlRootElement
-public class Rook implements Serializable {
+public class Rook extends Piece implements Serializable {
+    public Rook(boolean available, int x, int y) {
+        super(available, x, y);
+        // TODO Auto-generated constructor stub
+    }
+
+
+    @Override
+    public boolean isValid(Board board, int fromX, int fromY, int toX, int toY) {
+        if(super.isValid(board, fromX, fromY, toX, toY) == false)
+            return false;
+        if(toX == fromX)
+            return true;
+        if(toY == fromY)
+            return true;
+        return false;
+    }   
 
     private static final long serialVersionUID = 1L;
     @Id
